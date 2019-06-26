@@ -4,9 +4,10 @@ version: 2.1
 jobs:
   # The build job
   build:
-    working_directory: ~/project
     docker:
-      - image: cirlceci/node:6.10-browsers
+      # specify the version you desire here
+      - image: circleci/node:7.10
+    working_directory: ~/project
 
     steps:
       - checkout
@@ -25,4 +26,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn run lint
       - run: yarn run test
+      - run: sudo apt-get update && sudo apt-get install -y python-dev
+      - run: sudo curl -O https://bootstrap.pypa.io/get-pip.py
+      - run: sudo python get-pip.py
+      - run: sudo pip install awscli --upgrade
+      - run: aws --version
+      - run: aws s3 ls
+      - run: yarn run deploy
 
