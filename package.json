@@ -62,7 +62,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "yarn build && aws s3 sync build/ s3://myawesomeapp.com --delete"
+    "deploy": "yarn build && aws s3 sync build/ s3://vishal-mybucket-demo --delete"
   },
   "eslintConfig": {
     "extends": "react-app"
