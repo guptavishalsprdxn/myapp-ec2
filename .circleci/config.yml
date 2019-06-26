@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: cirlceci/node:8.9.4
+      - image: cirlceci/node:6.10-browsers
 
     steps:
       - checkout
